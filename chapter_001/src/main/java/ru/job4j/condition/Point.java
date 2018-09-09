@@ -33,6 +33,7 @@ public class Point {
      * Задание конкретных точек и вывод результата на консоль.
      * За счёт ссылки метода distanceTo к объектам, мы получаем координату первой точки.
      */
+    /*
     public static void main(String[] args) {
         Point a = new Point(0, 1);
         Point b = new Point(2, 5);
@@ -44,11 +45,12 @@ public class Point {
         System.out.println("x3 = " + c.x);
         System.out.println("y3 = " + c.y);
 
-        double resultToB = a.distanceTo(b);
-        double resultToC = a.distanceTo(c);
-        double resultBtoC = b.distanceTo(c);
-        System.out.println("Расстояние между точками А и Б : " + resultToB);
-        System.out.println("Расстояние между точками А и C : " + resultToC);
-        System.out.println("Расстояние между точками Б и C : " + resultBtoC);
+        double aToB = a.distanceTo(b);
+        double aToC = a.distanceTo(c);
+        double bToC = b.distanceTo(c);
+        System.out.println("Расстояние между точками А и Б : " + aToB);
+        System.out.println("Расстояние между точками А и C : " + aToC);
+        System.out.println("Расстояние между точками Б и C : " + bToC);
     }
+    */
 }
