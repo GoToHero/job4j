@@ -21,9 +21,16 @@ public class MaxTest {
     }
 
     @Test
-    public void whenAddThird() {
+    public void whenAddThirdMax() {
         Max maxim = new Max();
         int result = maxim.max(-1, -6, 5);
         assertThat(result, is(5));
+    }
+
+    @Test
+    public void whenThirdLessOthers() {
+        Max maxim = new Max();
+        int result = maxim.max(-1, -6, -10);
+        assertThat(result, is(-1));
     }
 }
