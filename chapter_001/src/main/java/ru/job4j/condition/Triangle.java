@@ -51,7 +51,7 @@ public class Triangle {
      * @return Возможность существования треугольника с заданными точкмми.
      */
     private boolean exist(double ab, double ac, double bc) {
-        if (ab > 0 & ab > 0 & bc > 0) {
+        if (ab + ac > bc) {
             return true;
         } else {
             return false;
