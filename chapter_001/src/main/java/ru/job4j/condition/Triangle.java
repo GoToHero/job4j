@@ -1,10 +1,13 @@
 package ru.job4j.condition;
+
 public class Triangle {
     private Point a;
     private Point b;
     private Point c;
 
+
     public Triangle(Point a, Point b, Point c) {
+        Triangle triangle = new Triangle();
         this.a = a;
         this.b = b;
         this.c = c;
@@ -36,6 +39,7 @@ public class Triangle {
         double ac = this.a.distanceTo(this.c);
         double bc = this.b.distanceTo(this.c);
         double p = this.period(ab, ac, bc);
+
         if (this.exist(ab, ac, bc)) {
             rsl = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
         }
@@ -50,8 +54,8 @@ public class Triangle {
      * @param bc Длина от точки b c.
      * @return Возможность существования треугольника с заданными точкмми.
      */
-    private boolean exist(double ab, double ac, double bc) {
-        if (ab + ac > bc) {
+    public boolean exist(double ab, double ac, double bc) {
+        if (ab + ac > bc && ab + bc > ac && bc + ac > ab) {
             return true;
         } else {
             return false;
