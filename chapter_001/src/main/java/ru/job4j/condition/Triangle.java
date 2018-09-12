@@ -7,10 +7,12 @@ public class Triangle {
 
 
     public Triangle(Point a, Point b, Point c) {
-        Triangle triangle = new Triangle();
         this.a = a;
         this.b = b;
         this.c = c;
+    }
+
+    public Triangle() {
     }
 
     /**
@@ -55,10 +57,6 @@ public class Triangle {
      * @return Возможность существования треугольника с заданными точкмми.
      */
     public boolean exist(double ab, double ac, double bc) {
-        if (ab + ac > bc && ab + bc > ac && bc + ac > ab) {
-            return true;
-        } else {
-            return false;
-        }
+        return (ab + ac > bc && ab + bc > ac && bc + ac > ab);
     }
 }
