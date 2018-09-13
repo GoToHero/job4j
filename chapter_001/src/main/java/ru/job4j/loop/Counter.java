@@ -5,7 +5,7 @@ package ru.job4j.loop;
  * @version $Id$
  * @since 0.1
  */
-public class Counter{
+public class Counter {
     /**
      * Метод принимающий два целых числа и возвращающий сумму диапазона четных чисел
      * @param start первое число
