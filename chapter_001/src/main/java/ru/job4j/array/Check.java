@@ -13,6 +13,24 @@ public class Check {
     public boolean mono(boolean[] data) {
         boolean result = false;
         int index;
+
+        for (index = 0; index != data.length - 1; index++) {
+            if (data[1] == data[index]) {
+                result = true;
+            }
+            else {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    /*
+    Сложный способ.
+    public boolean mono(boolean[] data) {
+        boolean result = false;
+        int index;
         boolean boolTrue = true;
         boolean boolFalse = false;
         for (index = 0; index != data.length - 1; index++) {
@@ -26,5 +44,5 @@ public class Check {
             result = true;
         }
         return result;
-    }
+    }*/
 }
