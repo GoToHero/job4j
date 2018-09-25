@@ -11,14 +11,10 @@ public class Check {
      * @return результат, показывающий все ли значения массива истинны или ложны.
      */
     public boolean mono(boolean[] data) {
-        boolean result = false;
+        boolean result = true;
         int index;
-
-        for (index = 0; index != data.length - 1; index++) {
-            if (data[1] == data[index]) {
-                result = true;
-            }
-            else {
+        for (index = 0; index < data.length - 1; index++) {
+            if (data[0] != data[index]) {
                 result = false;
                 break;
             }
