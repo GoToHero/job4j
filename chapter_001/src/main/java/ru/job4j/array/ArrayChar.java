@@ -16,21 +16,15 @@ public class ArrayChar {
      * @return если слово начинается с префикса
      */
     public boolean startWith(String prefix) {
-        boolean result = false;
+        boolean result = true;
         char[] value = prefix.toCharArray();
         int x;
-        int y = 0;
-        for (x = 0; x != value.length - 1; x++) {
-            if (value[x] == this.data[y]) {
-                result = true;
-                y++;
-            }
-            else {
+        for (x = 0; x < value.length; x++) {
+            if (value[x] != this.data[x]) {
                 result = false;
                 break;
             }
         }
-                // проверить. что массив data имеет первые элементы одинаковые с value
         return result;
     }
 }
