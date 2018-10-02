@@ -5,23 +5,32 @@ package ru.job4j.array;
  *  @since 0.1
  */
 public class MatrixCheck {
-
+    /**
+     * Метод проверяющий диагонали массива на истинность.
+     * @param data исходный массив.
+     * @return значение истинности однородности диагоналей.
+     */
     public boolean mono(boolean[][] data) {
         boolean result = true;
-        for (int i = 1; i < data.length; i++) {
-            //Задаем условие равенства вершин диагоналей.
-            //Первая диагональ.
-            for (int j = 1; j < data.length; j++) {
-                if (data[i][j] != data[0][0] & data[data.length - 1][data.length - 1]
-                & data[data.length - 1][0] & data[0][data.length - 1]) {
+        if (data.length % 2 != 0) {
+            for (int i = 1; i < data.length - 1; i++) {
+                if (data[0][0] != data[i][i]) {
+                    result = false;
+                    break;
+                }
+                if (data[0][0] != data[i][data.length - 1 - i]) {
                     result = false;
                     break;
                 }
             }
-            //Вторая диагональ.
-            for (int j = data.length - 2; j >= 0; j--) {
-                if (data[i][j] != data[0][0] & data[data.length - 1][data.length - 1]
-                        & data[data.length - 1][0] & data[0][data.length - 1]) {
+        }
+        else {
+            for (int i = 1; i < data.length - 1; i++) {
+                if (data[0][0] != data[i][i]) {
+                    result = false;
+                    break;
+                }
+                if (data[0][data.length - 1] != data[i][data.length - 1 - i]) {
                     result = false;
                     break;
                 }
