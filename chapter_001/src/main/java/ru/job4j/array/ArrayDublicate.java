@@ -15,8 +15,9 @@ public class ArrayDublicate {
      */
     public String[] remove(String[] array) {
         String temp;
-        int start = 0;
+        int start = 1;
         int i;
+        int removeSize = array.length;
         for (int j = 0; j < array.length - 1; j++) {
             for (i = start; i < array.length - 1; i++) {
                 if (array[j].equals(array[i])) {
@@ -24,9 +25,14 @@ public class ArrayDublicate {
                     array[i] = array[i + 1];
                     array[i + 1] = temp;
                 }
+                //Т.к. происходит последовательная замена,
+                //создаем счётчик, который фиксирует перемещение дубликата в край массива
+                if (array[j].equals(array[array.length - 1])) {
+                    removeSize--;
+                }
             }
             start++;
         }
-        return Arrays.copyOf(array, 5);
+        return Arrays.copyOf(array, removeSize);
     }
 }
