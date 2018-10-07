@@ -16,4 +16,13 @@ public class ArrayDublicateTest {
     String[] result = arrayDublicate.remove(input);
     assertThat(result, arrayContainingInAnyOrder(except));
     }
+
+    @Test
+    public void test() {
+        String[] input = {"Результат", "Результат", "Результат", "Результат", "Результат", "Результат", "Результат"};
+        String[] except = {"Результат"};
+        ArrayDublicate arrayDublicate = new ArrayDublicate();
+        String[] result = arrayDublicate.remove(input);
+        assertThat(result, arrayContainingInAnyOrder(except));
+    }
 }
