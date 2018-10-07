@@ -19,11 +19,12 @@ public class ArrayDublicate {
         int dublicates = 0;
         String temp;
         for (j = 0; j < array.length - dublicates; j++) {
-            for (i = 1; i < array.length - dublicates; i++) {
+            for (i = j + 1; i < array.length - dublicates; i++) {
                 if (array[j].equals(array[i])) {
                     temp = array[array.length - 1 - dublicates];
                     array[array.length - 1 - dublicates] = array[i];
                     array[i] = temp;
+                    i--;
                     dublicates++;
                 }
             }
@@ -43,6 +44,6 @@ public class ArrayDublicate {
         }
         return Arrays.copyOf(array, removeSize);
         */
-        return Arrays.copyOf(array, dublicates);
+        return Arrays.copyOf(array, array.length - dublicates);
     }
 }
