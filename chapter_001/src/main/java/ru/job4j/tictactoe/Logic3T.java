@@ -8,14 +8,30 @@ public class Logic3T {
     }
 
     public boolean isWinnerX() {
-        boolean result = false;
+        boolean result = true;
         for (int i = 0; i < this.table.length - 1; i++) {
             for (int j = 0; j < this.table.length - 1; j++) {
-                if (this.table[i][j] != this.table[i][j + 1]
-                        || this.table[j][i] != this.table[j + 1][i]
-                        || this.table[i][i] != this.table[i + 1][i + 1]
-                        || this.table[this.table.length - 1 - i][i] != this.table[this.table.length - 2 - i][i + 1]) {
-                    result = true;
+                if (this.table[i][j].hasMarkX() != this.table[i][j + 1].hasMarkX()) {
+                    result = false;
+                    break;
+                }
+            }
+        }
+        if (!result) {
+            for (int i = 0; i < this.table.length - 1; i++) {
+                for (int j = 0; j < this.table.length - 1; j++) {
+                    if (this.table[j][i].hasMarkX() != this.table[j + 1][i].hasMarkX()) {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+        }
+        if (!result) {
+            for (int i = 0; i < this.table.length - 1; i++) {
+                if (this.table[i][i].hasMarkX() != this.table[i + 1][i + 1].hasMarkX()
+                        && this.table[this.table.length - 1 - i][i].hasMarkX() != this.table[this.table.length - 2 - i][i + 1].hasMarkX()) {
+                    result = false;
                     break;
                 }
             }
@@ -24,14 +40,30 @@ public class Logic3T {
     }
 
     public boolean isWinnerO() {
-        boolean result = false;
+        boolean result = true;
         for (int i = 0; i < this.table.length - 1; i++) {
             for (int j = 0; j < this.table.length - 1; j++) {
-                if (this.table[i][j] != this.table[i][j + 1]
-                        || this.table[j][i] != this.table[j + 1][i]
-                        || this.table[i][i] != this.table[i + 1][i + 1]
-                        || this.table[this.table.length - 1 - i][i] != this.table[this.table.length - 2 - i][i + 1]) {
-                    result = true;
+                if (this.table[i][j].hasMarkO() != this.table[i][j + 1].hasMarkO()) {
+                    result = false;
+                    break;
+                }
+            }
+        }
+        if (!result) {
+            for (int i = 0; i < this.table.length - 1; i++) {
+                for (int j = 0; j < this.table.length - 1; j++) {
+                    if (this.table[j][i].hasMarkO() != this.table[j + 1][i].hasMarkO()) {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+        }
+        if (!result) {
+            for (int i = 0; i < this.table.length - 1; i++) {
+                if (this.table[i][i].hasMarkO() != this.table[i + 1][i + 1].hasMarkO()
+                        || this.table[this.table.length - 1 - i][i].hasMarkO() != this.table[this.table.length - 2 - i][i + 1].hasMarkO()) {
+                    result = false;
                     break;
                 }
             }
@@ -43,10 +75,7 @@ public class Logic3T {
         boolean result = false;
         for (int i = 0; i < this.table.length - 1; i++) {
             for (int j = 0; j < this.table.length - 1; j++) {
-                if (this.table[i][j] != this.table[i][j + 1]
-                        || this.table[j][i] != this.table[j + 1][i]
-                        || this.table[i][i] != this.table[i + 1][i + 1]
-                        || this.table[this.table.length - 1 - i][i] != this.table[this.table.length - 2 - i][i + 1]) {
+                if (!this.table[i][j].hasMarkX() && !this.table[i][j].hasMarkO()) {
                     result = true;
                     break;
                 }
