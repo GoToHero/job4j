@@ -6,6 +6,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class AscendingTest {
+
     @Test
     public void whenWeHaveTwoNonIntersectingArrays() {
         Ascending ascending = new Ascending();

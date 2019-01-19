@@ -8,8 +8,8 @@ package ru.job4j.ascending;
 public class Ascending {
     /**
      * Метод сортирующий два массива отсортированные по возрастанию в один массив отсортированный по возрастанию.
-     * @param firstArray первый массив.
-     * @param secondArray второй массив.
+     * @param firstArray первый массив отстортированный по возрастанию.
+     * @param secondArray второй массив отстортированный по возрастанию.
      * @return суммарный массив отстортированный по возрастанию.
      */
     public static int[] increasingSort (int[] firstArray, int[] secondArray) {
