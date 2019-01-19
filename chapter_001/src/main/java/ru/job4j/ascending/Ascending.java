@@ -6,9 +6,12 @@ package ru.job4j.ascending;
  *@version 1.0
  */
 public class Ascending {
-    private static int[] firstArray;
-    private static int[] secondArray;
-
+    /**
+     * Метод сортирующий два массива отсортированные по возрастанию в один массив отсортированный по возрастанию.
+     * @param firstArray первый массив.
+     * @param secondArray второй массив.
+     * @return суммарный массив отстортированный по возрастанию.
+     */
     public static int[] increasingSort (int[] firstArray, int[] secondArray) {
         int n = firstArray.length;
         int m = secondArray.length;
