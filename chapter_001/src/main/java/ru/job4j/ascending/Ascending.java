@@ -40,24 +40,6 @@ public class Ascending {
             index++;
             j++;
         }
-        /*for (i, j; i < n && j < m; index++) {
-            if (firstArray[i] < secondArray[j]) {
-                increasArray[index] = firstArray[i];
-                i++;
-            }
-            else {
-                increasArray[index] = secondArray[j];
-                j++;
-            }
-        }
-        for (i; i < n; index++) {
-            increasArray[index] = firstArray[i];
-            i++;
-        }
-        for (j; j < m; index++) {
-            increasArray[index] = secondArray[j];
-            j++;
-        }*/
         return increasArray;
     }
 }
