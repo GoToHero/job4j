@@ -2,34 +2,60 @@ package ru.job4j.tictactoe;
 
 public class Logic3T {
     private final Figure3T[][] table;
-    private static final int START = 1;
+
     public Logic3T(Figure3T[][] table) {
         this.table = table;
     }
 
-    public boolean overlapX(int x, int y, int match, int deltaX, int deltaY) {
-        boolean result = false;
-        if (match == 3) {
-            result = true;
-        }
-        else {
-            if (x + deltaX < this.table.length && y + deltaY < this.table.length &&
-                    this.table[x][y].hasMarkX() == this.table[x + deltaX][y + deltaY].hasMarkX()) {
-                result = this.overlapX(x + deltaX, y + deltaY, match + 1, deltaX, deltaY);
+    public byte overlap() {
+        byte result = 0;
+        int xStripeX;
+        int yStripeX;
+        int downDiagStripeX;
+        int upDiagStripeX;
+        int xStripeO;
+        int yStripeO;
+        int downDiagStripeO;
+        int upDiagStripeO;
+        for (int i = 0; i < this.table.length; i++) {
+            xStripeX = 0;
+            yStripeX = 0;
+            downDiagStripeX = 0;
+            upDiagStripeX = 0;
+            xStripeO = 0;
+            yStripeO = 0;
+            downDiagStripeO = 0;
+            upDiagStripeO = 0;
+            for (int j = 0; j < this.table.length; j++) {
+                if (this.table[i][j].hasMarkX()) {
+                    xStripeX++;
+                } else if (this.table[i][j].hasMarkO()) {
+                    xStripeO++;
+                }
+                if (this.table[j][i].hasMarkX()) {
+                    yStripeX++;
+                } else if(this.table[j][i].hasMarkO()) {
+                    yStripeO++;
+                }
             }
-        }
-        return result;
-    }
-
-    public boolean overlapO(int x, int y, int match, int deltaX, int deltaY) {
-        boolean result = false;
-        if (match == 3) {
-            result = true;
-        }
-        else {
-            if (x + deltaX < this.table.length && y + deltaY < this.table.length &&
-                    this.table[x][y].hasMarkO() == this.table[x + deltaX][y + deltaY].hasMarkO()) {
-                result = this.overlapO(x + deltaX, y + deltaY, match + 1, deltaX, deltaY);
+            if (this.table[i][i].hasMarkX()) {
+                downDiagStripeX++;
+            } else if (this.table[i][i].hasMarkO()){
+                downDiagStripeO++;
+            }
+            if (this.table[i][this.table.length - i - 1].hasMarkX()) {
+                upDiagStripeX++;
+            } else if (this.table[i][this.table.length - i - 1].hasMarkO()) {
+                upDiagStripeO++;
+            }
+            if (xStripeX == this.table.length || yStripeX == this.table.length ||
+                    downDiagStripeX == this.table.length || upDiagStripeX == this.table.length) {
+                result = 1;
+                break;
+            } else if (xStripeO == this.table.length || yStripeO == this.table.length ||
+                    downDiagStripeO == this.table.length || upDiagStripeO == this.table.length) {
+                result = 2;
+                break;
             }
         }
         return result;
@@ -37,32 +63,16 @@ public class Logic3T {
 
     public boolean isWinnerX() {
         boolean result = false;
-        for (int x = 0; x < this.table.length; x++) {
-            for (int y = 0; y < this.table.length; y++) {
-                if (this.overlapX(x, y, START, 0, 1) ||
-                        this.overlapX(x, y, START, 1, 0) ||
-                        this.overlapX(x, y, START, 1, 1)) {
-                    result = true;
-                    break;
-                }
-            }
-
+        if (this.overlap() == 1) {
+            result = true;
         }
         return result;
     }
 
     public boolean isWinnerO() {
         boolean result = false;
-        for (int x = 0; x < this.table.length; x++) {
-            for (int y = 0; y < this.table.length; y++) {
-                if (this.overlapO(x, y, START, 0, 1) ||
-                        this.overlapO(x, y, START, 1, 0) ||
-                        this.overlapO(x, y, START, 1, 1)) {
-                    result = true;
-                    break;
-                }
-            }
-
+        if (this.overlap() == 2) {
+            result = true;
         }
         return result;
     }
