@@ -7,6 +7,11 @@ public class Logic3T {
         this.table = table;
     }
 
+    /**
+     * Метод результат которого значение типа byte. Если byte = 1 - выиграли крестики.
+     * Если 2, то нолики.
+     * @return значение определяющее победителя.
+     */
     public byte overlap() {
         byte result = 0;
         int xStripeX;
@@ -90,3 +95,4 @@ public class Logic3T {
         return result;
     }
 }
+
