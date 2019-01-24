@@ -13,7 +13,7 @@ public class AscendingTest {
         int[] firstArray = new int[] {1, 2, 3, 4, 5};
         int[] secondArray = new int[] {6, 7, 8, 9, 10};
         int[] result = Ascending.increasingSort(firstArray, secondArray);
-        int[] expect = new int [] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] expect = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         assertThat(result, is(expect));
     }
     @Test
@@ -22,7 +22,7 @@ public class AscendingTest {
         int[] firstArray = new int[] {1, 2, 3};
         int[] secondArray = new int[] {4, 5, 6, 7, 8, 9, 10};
         int[] result = Ascending.increasingSort(firstArray, secondArray);
-        int[] expect = new int [] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] expect = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         assertThat(result, is(expect));
     }
     @Test
@@ -31,7 +31,7 @@ public class AscendingTest {
         int[] firstArray = new int[] {1, 2, 3, 4, 5};
         int[] secondArray = new int[] {3, 4, 5, 6, 7};
         int[] result = Ascending.increasingSort(firstArray, secondArray);
-        int[] expect = new int [] {1, 2, 3, 3, 4, 4, 5, 5, 6, 7};
+        int[] expect = new int[] {1, 2, 3, 3, 4, 4, 5, 5, 6, 7};
         assertThat(result, is(expect));
     }
 }

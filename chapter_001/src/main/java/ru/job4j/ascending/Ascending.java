@@ -12,10 +12,10 @@ public class Ascending {
      * @param secondArray второй массив отстортированный по возрастанию.
      * @return суммарный массив отстортированный по возрастанию.
      */
-    public static int[] increasingSort (int[] firstArray, int[] secondArray) {
+    public static int[] increasingSort(int[] firstArray, int[] secondArray) {
         int n = firstArray.length;
         int m = secondArray.length;
-        int[] increasArray = new int [n + m];
+        int[] increasArray = new int[n + m];
         int i = 0;
         int j = 0;
         int index = 0;
@@ -23,8 +23,7 @@ public class Ascending {
             if (firstArray[i] < secondArray[j]) {
                 increasArray[index] = firstArray[i];
                 i++;
-            }
-            else {
+            } else {
                 increasArray[index] = secondArray[j];
                 j++;
             }

@@ -39,13 +39,13 @@ public class Logic3T {
                 }
                 if (this.table[j][i].hasMarkX()) {
                     yStripeX++;
-                } else if(this.table[j][i].hasMarkO()) {
+                } else if (this.table[j][i].hasMarkO()) {
                     yStripeO++;
                 }
             }
             if (this.table[i][i].hasMarkX()) {
                 downDiagStripeX++;
-            } else if (this.table[i][i].hasMarkO()){
+            } else if (this.table[i][i].hasMarkO()) {
                 downDiagStripeO++;
             }
             if (this.table[i][this.table.length - i - 1].hasMarkX()) {
@@ -53,12 +53,12 @@ public class Logic3T {
             } else if (this.table[i][this.table.length - i - 1].hasMarkO()) {
                 upDiagStripeO++;
             }
-            if (xStripeX == this.table.length || yStripeX == this.table.length ||
-                    downDiagStripeX == this.table.length || upDiagStripeX == this.table.length) {
+            if (xStripeX == this.table.length || yStripeX == this.table.length
+                    || downDiagStripeX == this.table.length || upDiagStripeX == this.table.length) {
                 result = 1;
                 break;
-            } else if (xStripeO == this.table.length || yStripeO == this.table.length ||
-                    downDiagStripeO == this.table.length || upDiagStripeO == this.table.length) {
+            } else if (xStripeO == this.table.length || yStripeO == this.table.length
+                    || downDiagStripeO == this.table.length || upDiagStripeO == this.table.length) {
                 result = 2;
                 break;
             }
