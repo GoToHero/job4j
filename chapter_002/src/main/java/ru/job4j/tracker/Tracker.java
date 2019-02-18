@@ -39,30 +39,36 @@ public class Tracker {
 
     /**
      * Метод заменяющий ячейку в массиве заявок.
-     * @param id
-     * @param item
+     * @param id номер заявки заменяемой ячейки.
+     * @param item массив на замену.
      * @return подтверждение замены.
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
-        this.items[this.position] = findById(id);
-        if (this.items[this.position] != null) {
-            result = true;
+        for (int index = 0; index < this.items.length; index++) {
+            if (this.items[index] != null && this.items[index].getId().equals(id)) {
+                this.items[index] = item;
+                result = true;
+                break;
+            }
         }
         return result;
     }
 
     /**
      * Метод удаляющий заявку.
-     * @param id
+     * @param id индентификатор удаляемой заявки.
      * @return подтверждение удаления.
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int index = 0; index != this.items.length; index++) {
-            if (this.items[index] != null && this.items[index].equals(findById(id))) {
-                this.position--;
-                this.items[index] = this.items[index + 1];
+        for (int index = 0; index < this.items.length; index++) {
+            if (this.items[index] != null && this.items[index].getId().equals(id)) {
+                //Попытка использовать Arrays.copyOf.
+                /*for (int removalIndex = index; removalIndex < this.items.length; removalIndex++) {
+                    this.items[removalIndex] = this.items[removalIndex + 1];
+                }*/
+                this.items = System.arraycopy(this.items, index + 1, this.items, index, this.items.length);
                 result = true;
                 break;
             }
