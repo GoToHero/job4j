@@ -29,4 +29,18 @@ public class TrackerTest {
         // Проверяем, что заявка с таким id имеет новые имя test2.
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
+
+    @Test
+    public void whenDeleteNameThenReturnNextName() {
+        Tracker tracker = new Tracker();
+        // Создаем трекер из трёх заявок.
+        Item previous = new Item("test1","testDescription1",12L);
+        Item forDelete = new Item("testForDelete","testForDelete",123L);
+        // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
+        tracker.add(forDelete);
+        // Создаем новую заявку.
+        Item next = new Item("test2","testDescription2",1234L);
+        // Проверяем весь возвращаемый массив трекера.
+        assertThat(tracker.delete(forDelete.getId()), is(true));
+    }
 }

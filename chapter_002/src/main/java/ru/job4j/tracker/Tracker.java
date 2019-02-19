@@ -48,6 +48,7 @@ public class Tracker {
         for (int index = 0; index < this.items.length; index++) {
             if (this.items[index] != null && this.items[index].getId().equals(id)) {
                 this.items[index] = item;
+                this.items[index].setId(id);
                 result = true;
                 break;
             }
@@ -64,11 +65,7 @@ public class Tracker {
         boolean result = false;
         for (int index = 0; index < this.items.length; index++) {
             if (this.items[index] != null && this.items[index].getId().equals(id)) {
-                //Попытка использовать Arrays.copyOf.
-                /*for (int removalIndex = index; removalIndex < this.items.length; removalIndex++) {
-                    this.items[removalIndex] = this.items[removalIndex + 1];
-                }*/
-                this.items = System.arraycopy(this.items, index + 1, this.items, index, this.items.length);
+                System.arraycopy(this.items, index + 1, this.items, index, this.items.length);
                 result = true;
                 break;
             }
@@ -81,7 +78,8 @@ public class Tracker {
      * @return копия заполненного массива.
      */
     public Item[] findAll() {
-        Item[] temp = new Item[this.items.length];
+        return Arrays.copyOf(this.items, this.position);
+        /*Item[] temp = new Item[this.items.length];
         int count = 0;
         for (Item item : this.items) {
             if (item != null) {
@@ -89,13 +87,7 @@ public class Tracker {
                 count++;
             }
         }
-        /*for (this.position = 0; this.position < this.items.length - 1; this.position++) {
-            if (this.items[position] != null) {
-                temp[count] = this.items[position];
-                count++;
-            }
-        }*/
-        return Arrays.copyOf(temp, count);
+        return Arrays.copyOf(temp, count);*/
     }
 
     /**
