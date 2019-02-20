@@ -41,6 +41,27 @@ public class TrackerTest {
         tracker.add(next);
         assertThat(tracker.indexOf(check.getId()), is(1));
     }
+
+    @Test
+    public void whenRightIdThenReturnIndex() {
+        Tracker tracker = new Tracker();
+        Item previous = new Item("test1","testDescription1",12L);
+        Item forDelete = new Item("testForDelete","testForDelete",123L);
+        tracker.add(previous);
+        tracker.add(forDelete);
+        final int byId = tracker.indexOf(forDelete.getId());
+        assertThat(byId, is(1));
+    }
+
+    @Test
+    public void whenWrongIdThenNoIndex() {
+        Tracker tracker = new Tracker();
+        Item forDelete = new Item("testForDelete","testForDelete",123L);
+        tracker.add(forDelete);
+        final int byId = tracker.indexOf("15");
+        assertThat(byId, is(-1));
+    }
+
     @Test
     public void whenDeleteNameThenReturnNextName() {
         Tracker tracker = new Tracker();
