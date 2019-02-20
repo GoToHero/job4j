@@ -128,14 +128,15 @@ public class Tracker {
      * @param id идентификационный номер заявки.
      * @return найденный индекс массива.
      */
-    private int indexOf(String id) {
-        int index;
-        for (index = 0; index < this.items.length; index++) {
+    public int indexOf(String id) {
+        int result = -1;
+        for (int index = 0; index < this.items.length; index++) {
             if (this.items[index].getId().equals(id)) {
+                result = index;
                 break;
             }
         }
-        return index;
+        return result;
     }
 
 }
