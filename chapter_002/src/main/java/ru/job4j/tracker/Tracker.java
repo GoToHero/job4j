@@ -106,7 +106,7 @@ public class Tracker {
             }
         }*/
         for (Item item : this.items) {
-            if (item != null && item.getName().equals(key) ) {
+            if (item != null && item.getName().equals(key)) {
                 temp[count] = item;
                 count++;
             }
