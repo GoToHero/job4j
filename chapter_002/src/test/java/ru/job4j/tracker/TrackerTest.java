@@ -63,7 +63,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenDeleteNameThenReturnNextName() {
+    public void whenDeleteThenReturnTrueOfOperation() {
         Tracker tracker = new Tracker();
         // Создаем трекер из трёх заявок.
         Item previous = new Item("test1","testDescription1",12L);
@@ -76,5 +76,22 @@ public class TrackerTest {
         tracker.add(next);
         // Проверяем весь возвращаемый массив трекера.
         assertThat(tracker.delete(forDelete.getId()), is(true));
+    }
+
+    @Test
+    public void whenDeleteThenReturnNextIndex() {
+        Tracker tracker = new Tracker();
+        // Создаем трекер из трёх заявок.
+        Item previous = new Item("test1","testDescription1",12L);
+        tracker.add(previous);
+        Item forDelete = new Item("testForDelete","testForDelete",123L);
+        // Добавляем заявку в трекер. Теперь в объект проинициализирован id.
+        tracker.add(forDelete);
+        // Создаем новую заявку.
+        Item next = new Item("test2","testDescription2",1234L);
+        tracker.add(next);
+        tracker.delete(forDelete.getId());
+        // Проверяем весь возвращаемый массив трекера.
+        assertThat(tracker.indexOf(next.getId()), is(1));
     }
 }

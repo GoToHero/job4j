@@ -63,9 +63,9 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int index = 0; index < this.items.length; index++) {
+        for (int index = 0; index < this.items.length - 1; index++) {
             if (this.items[index] != null && this.items[index].getId().equals(id)) {
-                System.arraycopy(this.items, index + 1, this.items, index, this.items.length);
+                System.arraycopy(this.items, index + 1, this.items, index, this.items.length - 2);
                 result = true;
                 break;
             }
@@ -131,7 +131,7 @@ public class Tracker {
     public int indexOf(String id) {
         int result = -1;
         for (int index = 0; index < this.items.length; index++) {
-            if (this.items[index].getId().equals(id)) {
+            if (this.items[index] != null && this.items[index].getId().equals(id)) {
                 result = index;
                 break;
             }
