@@ -94,4 +94,16 @@ public class TrackerTest {
         // Проверяем весь возвращаемый массив трекера.
         assertThat(tracker.indexOf(next.getId()), is(1));
     }
+
+    @Test
+    public void whenGetKeyThenReturnItem() {
+        Tracker tracker = new Tracker();
+        Item previous = new Item("test1","testDescription1",12L);
+        Item forSearch = new Item("target","targetDescription",123L);
+        Item next = new Item("test2","testDescription2",1234L);
+        tracker.add(previous);
+        tracker.add(forSearch);
+        tracker.add(next);
+        assertThat(tracker.findByName("target"), is(forSearch));
+    }
 }

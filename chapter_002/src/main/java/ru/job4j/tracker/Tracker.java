@@ -63,10 +63,11 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int index = 0; index < this.items.length - 1; index++) {
+        for (int index = 0; index < this.position; index++) {
             if (this.items[index] != null && this.items[index].getId().equals(id)) {
-                System.arraycopy(this.items, index + 1, this.items, index, this.items.length - 2);
+                System.arraycopy(this.items, index + 1, this.items, index, this.items.length - 1 - index);
                 result = true;
+                this.position--;
                 break;
             }
         }
@@ -96,10 +97,16 @@ public class Tracker {
      * @return совпадающий массив заявок.
      */
     public Item[] findByName(String key) {
-        Item[] temp = new Item[this.items.length];
+        Item[] temp = new Item[this.position];
         int count = 0;
+        /*for (int index = 0; index < this.position; index++) {
+            if (this.items[index] != null && this.items[index].getName().equals(key)) {
+                temp[count] = this.items[index];
+                count++;
+            }
+        }*/
         for (Item item : this.items) {
-            if (item.getName().equals(key) ) {
+            if (item != null && item.getName().equals(key) ) {
                 temp[count] = item;
                 count++;
             }
@@ -130,7 +137,7 @@ public class Tracker {
      */
     public int indexOf(String id) {
         int result = -1;
-        for (int index = 0; index < this.items.length; index++) {
+        for (int index = 0; index < this.position; index++) {
             if (this.items[index] != null && this.items[index].getId().equals(id)) {
                 result = index;
                 break;
