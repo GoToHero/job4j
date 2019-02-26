@@ -34,6 +34,11 @@ public class Item {
         return this.id;
     }
 
+    @Override
+    public String toString() {
+        return "Item [ItemID=" + id + ", Name=" + name + ", Description=" + description + "]";
+    }
+
     public void setId(String id) {
         this.id = id;
     }
