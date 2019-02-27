@@ -103,8 +103,7 @@ public class StartUI {
         Item[] result = this.tracker.findAll();
         for (int index = 0; index < result.length; index++) {
             if (result[index] != null) {
-                System.out.println("ID заявки: " + result[index].getId() + " Имя: " + result[index].getName()
-                        + " Описание: " + result[index].getDescription());
+                System.out.println(result[index]);
             }
         }
     }
@@ -115,24 +114,34 @@ public class StartUI {
         String name = this.input.ask("Введите новое имя заявки :");
         String desc = this.input.ask("Введите новое описание заявки :");
         Item item = new Item(name, desc);
-        this.tracker.replace(id, item);
-        System.out.println("Операция выполнена. Новая заявка имеет ID: " + item.getId() + " Имя заявки: "
-                + item.getName() + " Описание заявки: " + item.getDescription());
+        if (this.tracker.replace(id, item)) {
+            System.out.println("Операция выполнена. Новая заявка имеет ID: " + item.getId() + " Имя заявки: "
+                    + item.getName() + " Описание заявки: " + item.getDescription());
+        } else {
+            System.out.println("Операция не выполнена. С указанным ID совпадений не найдено.");
+        }
     }
 
     private void deleteItem() {
         System.out.println("------------ Удаление заявки --------------");
         String id = this.input.ask("Введите ID удаляемой заявки :");
-        this.tracker.delete(id);
-        System.out.println("------------ Операция выполнена --------------");
+        if (this.tracker.delete(id)) {
+            System.out.println("------------ Операция выполнена --------------");
+        } else {
+            System.out.println("Операция не выполнена. С указанным ID совпадений не найдено.");
+        }
     }
 
     private void findByIdItem() {
         System.out.println("------------ Поиск заявки по идентификатору --------------");
         String id = this.input.ask("Введите ID для поиска заявки :");
         Item result = this.tracker.findById(id);
-        System.out.println("------------ Найдена заявка : " + result.getName() + " Описание: "
-                + result.getDescription() + "-----------");
+        if (result != null) {
+            System.out.println("------------ Найдена заявка : " + result.getName() + " Описание: "
+                    + result.getDescription() + "-----------");
+        } else {
+            System.out.println("Операция не выполнена. С указанным ID совпадений не найдено.");
+        }
     }
 
     private void findByNameItem() {
