@@ -28,10 +28,10 @@ public class PaintTest {
 
     @Test
     public void whenDrawSquare() {
-                new Paint().draw(new Square());
+        new Paint().draw(new Square());
         // проверяем результат вычисления
         assertThat(
-                new String(out.toByteArray()),
+                this.out.toString(),
                 is(
                         new StringBuilder()
                                 .append("++++")
@@ -49,7 +49,7 @@ public class PaintTest {
         new Paint().draw(new Triangle());
         // проверяем результат вычисления
         assertThat(
-                new String(out.toByteArray()),
+                this.out.toString(),
                 is(
                         new StringBuilder()
                                 .append("  +  ")
