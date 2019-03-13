@@ -1,12 +1,34 @@
 package ru.job4j.tracker;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.hamcrest.collection.IsArrayContainingInAnyOrder.arrayContainingInAnyOrder;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class StartUITest {
+
+    private final PrintStream sdout = System.out;
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+    @Before
+    public void loadOutput() {
+        System.out.println("Начало теста. Пользователь выбрал -");
+        System.setOut(new PrintStream(this.out));
+    }
+
+    @After
+    public void backOutput() {
+        System.setOut(this.sdout);
+        System.out.println(this.out.toString() + "Конец теста.");
+        System.out.println();
+    }
+
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();     // создаём Tracker
@@ -76,5 +98,33 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         Item[] result = new Item[] {first, second, third};
         assertThat(tracker.findAll(), is(result));
+    }
+
+    @Test
+    public void whenUserAddItemThenConsoleShow() {
+        Tracker tracker = new Tracker();     // создаём Tracker
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
+        new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
+        assertThat(this.out.toString(), is(
+                "Меню.\r\n" +
+                "0. Добавить заявку.\r\n" +
+                "1. Показать все заявки.\r\n" +
+                "2. Редактировать/заменить заявку.\r\n" +
+                "3. Удалить заявку.\r\n" +
+                "4. Найти заявку по идентификатору.\r\n" +
+                "5. Найти заявку по имени.\r\n" +
+                "6. Выйти из программы.\r\n" +
+                "Выбор: \r\n" +
+                "------------ Добавление новой заявки --------------\r\n" +
+                "------------ Новая заявка с getId : " + tracker.findAll()[0].getId() + "-----------\r\n" +
+                "Меню.\r\n" +
+                "0. Добавить заявку.\r\n" +
+                "1. Показать все заявки.\r\n" +
+                "2. Редактировать/заменить заявку.\r\n" +
+                "3. Удалить заявку.\r\n" +
+                "4. Найти заявку по идентификатору.\r\n" +
+                "5. Найти заявку по имени.\r\n" +
+                "6. Выйти из программы.\r\n" +
+                "Выбор: \r\n"));
     }
 }
