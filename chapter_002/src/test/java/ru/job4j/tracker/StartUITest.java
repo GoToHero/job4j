@@ -139,14 +139,11 @@ public class StartUITest {
     @Test
     public void whenDeleteThenConsoleShowSuccess() {
         Tracker tracker = new Tracker();
-        //Задаём вручную несколько заявок
         Item first = tracker.add(new Item("pes", "gav"));
         Item second = tracker.add(new Item("kot", "myau"));
         Item third = tracker.add(new Item("gus", "krya"));
-        //создаем StubInput с параметрами на удаление второй заявки.
         Input input = new StubInput(new String[]{"3", second.getId(), "6"});
         new StartUI(input, tracker).init();
-        //проверяем индекс заявки, следующей за удаленной
         assertThat(this.out.toString(), is(
                 menu +
                         "------------ Удаление заявки --------------\r\n" +
@@ -177,7 +174,6 @@ public class StartUITest {
         Item third = tracker.add(new Item("gus", "krya"));
         Input input = new StubInput(new String[]{"5", second.getName(), "6"});
         new StartUI(input, tracker).init();
-        Item[] result = new Item[]{second};
         assertThat(this.out.toString(), is(
                 menu +
                         "------------ Поиск заявок по имени --------------\r\n" +
@@ -193,11 +189,10 @@ public class StartUITest {
         Item third = tracker.add(new Item("gus", "krya"));
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
-        Item[] result = new Item[] {first, second, third};
         assertThat(this.out.toString(), is(
                 menu +
                         "------------ Все заполненные заявки --------------\r\n" +
-                        tracker.findAll() +
+                        tracker.findAll()[0] + tracker.findAll()[1] + tracker.findAll()[2] +
                         menu));
     }
 }
