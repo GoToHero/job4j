@@ -192,7 +192,8 @@ public class StartUITest {
         assertThat(this.out.toString(), is(
                 menu +
                         "------------ Все заполненные заявки --------------\r\n" +
-                        tracker.findAll()[0] + tracker.findAll()[1] + tracker.findAll()[2] +
+                        first + System.lineSeparator() + second +
+                        System.lineSeparator() + third + System.lineSeparator() +
                         menu));
     }
 }
