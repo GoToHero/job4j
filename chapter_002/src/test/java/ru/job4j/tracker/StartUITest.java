@@ -16,15 +16,15 @@ public class StartUITest {
     private final PrintStream sdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final String menu =
-            "Меню.\r\n" +
-            "0. Добавить заявку.\r\n" +
-            "1. Показать все заявки.\r\n" +
-            "2. Редактировать/заменить заявку.\r\n" +
-            "3. Удалить заявку.\r\n" +
-            "4. Найти заявку по идентификатору.\r\n" +
-            "5. Найти заявку по имени.\r\n" +
-            "6. Выйти из программы.\r\n" +
-            "Выбор: \r\n";
+            "Меню." + System.lineSeparator()
+            + "0. Добавить заявку." + System.lineSeparator()
+            + "1. Показать все заявки." + System.lineSeparator()
+            + "2. Редактировать/заменить заявку." + System.lineSeparator()
+            + "3. Удалить заявку." + System.lineSeparator()
+            + "4. Найти заявку по идентификатору." + System.lineSeparator()
+            + "5. Найти заявку по имени." + System.lineSeparator()
+            + "6. Выйти из программы." + System.lineSeparator()
+            + "Выбор: " + System.lineSeparator();
 
     @Before
     public void loadOutput() {
@@ -116,10 +116,10 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
         assertThat(this.out.toString(), is(
-                menu +
-                "------------ Добавление новой заявки --------------\r\n" +
-                "------------ Новая заявка с getId : " + tracker.findAll()[0].getId() + "-----------\r\n" +
-                menu));
+                 menu
+                   + "------------ Добавление новой заявки --------------" + System.lineSeparator()
+                   + "------------ Новая заявка с getId : " + tracker.findAll()[0].getId() + "-----------"
+                        + System.lineSeparator() + menu));
     }
 
     @Test
@@ -129,11 +129,11 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
         new StartUI(input, tracker).init();
         assertThat(this.out.toString(), is(
-                menu +
-                        "------------ Редактировние заявки --------------\r\n" +
-                        "Операция выполнена. Новая заявка имеет ID: " + tracker.findAll()[0].getId() +
-                        " Имя заявки: test replace Описание заявки: заменили заявку\r\n" +
-                        menu));
+                menu
+                        + "------------ Редактировние заявки --------------" + System.lineSeparator()
+                        + "Операция выполнена. Новая заявка имеет ID: " + tracker.findAll()[0].getId()
+                        + " Имя заявки: test replace Описание заявки: заменили заявку"
+                        + System.lineSeparator() + menu));
     }
 
     @Test
@@ -145,10 +145,10 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"3", second.getId(), "6"});
         new StartUI(input, tracker).init();
         assertThat(this.out.toString(), is(
-                menu +
-                        "------------ Удаление заявки --------------\r\n" +
-                        "------------ Операция выполнена --------------\r\n" +
-                        menu));
+                menu
+                        + "------------ Удаление заявки --------------" + System.lineSeparator()
+                        + "------------ Операция выполнена --------------" + System.lineSeparator()
+                        + menu));
     }
 
     @Test
@@ -160,10 +160,10 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"4", second.getId(), "6"});
         new StartUI(input, tracker).init();
         assertThat(this.out.toString(), is(
-                menu +
-                        "------------ Поиск заявки по идентификатору --------------\r\n" +
-                        "------------ Найдена заявка : kot Описание: myau-----------\r\n" +
-                        menu));
+                menu
+                        + "------------ Поиск заявки по идентификатору --------------" + System.lineSeparator()
+                        + "------------ Найдена заявка : kot Описание: myau-----------"
+                        + System.lineSeparator() + menu));
     }
 
     @Test
@@ -175,10 +175,10 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"5", second.getName(), "6"});
         new StartUI(input, tracker).init();
         assertThat(this.out.toString(), is(
-                menu +
-                        "------------ Поиск заявок по имени --------------\r\n" +
-                        "ID заявки: " + tracker.findAll()[1].getId() + " Имя: kot Описание: myau\r\n" +
-                        menu));
+                menu
+                        + "------------ Поиск заявок по имени --------------" + System.lineSeparator()
+                        + "ID заявки: " + tracker.findAll()[1].getId() + " Имя: kot Описание: myau"
+                        + System.lineSeparator() + menu));
     }
 
     @Test
@@ -190,10 +190,10 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
         assertThat(this.out.toString(), is(
-                menu +
-                        "------------ Все заполненные заявки --------------\r\n" +
-                        first + System.lineSeparator() + second +
-                        System.lineSeparator() + third + System.lineSeparator() +
-                        menu));
+                menu
+                        + "------------ Все заполненные заявки --------------" + System.lineSeparator()
+                        + first + System.lineSeparator() + second
+                        + System.lineSeparator() + third + System.lineSeparator()
+                        + menu));
     }
 }
