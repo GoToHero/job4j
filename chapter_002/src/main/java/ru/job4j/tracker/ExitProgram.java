@@ -4,11 +4,16 @@ public class ExitProgram implements UserAction{
 
     @Override
     public int key() {
-        return EXIT;
+        return 6;
+    }
+
+    @Override
+    public void execute(Input input, Tracker tracker) {
+        System.out.println("------------ Exit from program --------------");
     }
 
     @Override
     public String info() {
-        return "Exit program.";
+        return "6. Exit program.";
     }
 }

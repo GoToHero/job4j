@@ -4,7 +4,7 @@ public class FindAllItem implements UserAction {
 
     @Override
     public int key() {
-        return SHOW;
+        return 1;
     }
 
     @Override
@@ -20,6 +20,6 @@ public class FindAllItem implements UserAction {
 
     @Override
     public String info() {
-        return "All has Items.";
+        return "1. All Items.";
     }
 }

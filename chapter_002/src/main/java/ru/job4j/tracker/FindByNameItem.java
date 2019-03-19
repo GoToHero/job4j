@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 public class FindByNameItem implements UserAction {
     @Override
     public int key() {
-        return FINDNAME;
+        return 5;
     }
 
     @Override
@@ -21,6 +21,6 @@ public class FindByNameItem implements UserAction {
 
     @Override
     public String info() {
-        return "Item has found.";
+        return "5. Search Item by Name.";
     }
 }

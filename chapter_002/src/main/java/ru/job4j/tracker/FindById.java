@@ -4,7 +4,7 @@ public class FindById implements UserAction {
 
     @Override
     public int key() {
-        return FINDNAME;
+        return 5;
     }
 
     @Override
@@ -22,6 +22,6 @@ public class FindById implements UserAction {
 
     @Override
     public String info() {
-        return "Item has found.";
+        return "4 Search Item by ID.";
     }
 }

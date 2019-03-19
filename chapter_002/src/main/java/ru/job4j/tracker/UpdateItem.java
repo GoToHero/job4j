@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 public class UpdateItem implements UserAction {
     @Override
     public int key() {
-        return EDIT;
+        return 2;
     }
 
     @Override
@@ -21,6 +21,6 @@ public class UpdateItem implements UserAction {
 
     @Override
     public String info() {
-        return "Edit Item.";
+        return "2. Edit Item.";
     }
 }

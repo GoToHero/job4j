@@ -4,7 +4,7 @@ public class DeleteItem implements UserAction {
 
     @Override
     public int key() {
-        return DELETE;
+        return 3;
     }
 
     @Override
@@ -16,6 +16,6 @@ public class DeleteItem implements UserAction {
 
     @Override
     public String info() {
-        return "Item deleted.";
+        return "3. Delete Item.";
     }
 }
