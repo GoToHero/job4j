@@ -1,6 +1,14 @@
 package ru.job4j.tracker;
 
-public class ExitProgram implements UserAction{
+public class ExitProgram implements UserAction {
+
+    private int key;
+    private String name;
+
+    public ExitProgram(int key, String name) {
+        this.key = key;
+        this.name = name;
+    }
 
     @Override
     public int key() {
@@ -14,6 +22,6 @@ public class ExitProgram implements UserAction{
 
     @Override
     public String info() {
-        return "6. Exit program.";
+        return String.format("%d. %s,", key, name);
     }
 }

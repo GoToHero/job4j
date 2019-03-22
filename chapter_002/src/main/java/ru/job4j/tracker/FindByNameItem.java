@@ -1,6 +1,15 @@
 package ru.job4j.tracker;
 
 public class FindByNameItem implements UserAction {
+
+    private int key;
+    private String name;
+
+    public FindByNameItem(int key, String name) {
+        this.key = key;
+        this.name = name;
+    }
+
     @Override
     public int key() {
         return 5;
@@ -21,6 +30,6 @@ public class FindByNameItem implements UserAction {
 
     @Override
     public String info() {
-        return "5. Search Item by Name.";
+        return String.format("%d. %s", key, name);
     }
 }

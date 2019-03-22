@@ -1,6 +1,15 @@
 package ru.job4j.tracker;
 
 public class UpdateItem implements UserAction {
+
+    private int key;
+    private String name;
+
+    public UpdateItem(int key, String name) {
+        this.key = key;
+        this.name = name;
+    }
+
     @Override
     public int key() {
         return 2;
@@ -21,6 +30,6 @@ public class UpdateItem implements UserAction {
 
     @Override
     public String info() {
-        return "2. Edit Item.";
+        return String.format("%d. %s", key, name);
     }
 }

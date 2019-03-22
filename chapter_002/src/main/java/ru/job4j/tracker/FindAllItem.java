@@ -2,6 +2,14 @@ package ru.job4j.tracker;
 
 public class FindAllItem implements UserAction {
 
+    private int key;
+    private String name;
+
+    public FindAllItem(int key, String name) {
+        this.key = key;
+        this.name = name;
+    }
+
     @Override
     public int key() {
         return 1;
@@ -20,6 +28,6 @@ public class FindAllItem implements UserAction {
 
     @Override
     public String info() {
-        return "1. All Items.";
+        return String.format("%d. %s", key, name);
     }
 }
