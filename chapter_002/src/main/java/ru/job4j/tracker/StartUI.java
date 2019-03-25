@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.*;
+
 /**
  * @version $Id$
  * @since 0.1
@@ -65,10 +67,14 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        List<Integer> range = new ArrayList<>();
         menu.fillActions();
+        for (int i = 0; i < menu.getActionsLentgh(); i++) {
+            range.add(i);
+        }
         do {
             menu.show();
-            menu.select(Integer.valueOf(input.ask("select:")));
+            menu.select(input.ask("select:", range));
         } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
 
