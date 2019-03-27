@@ -59,9 +59,9 @@ public class MenuTracker {
     }
 
     public int[] getRange() {
-        int[] range = new int[getActionsLentgh() + 1];
-        for (int index:range) {
-            range[index] = index;
+        int[] range = new int[actions.size()];
+        for (int index = 0; index < actions.size(); index++) {
+            range[index] = actions.get(index).key();
         }
         return range;
     }
