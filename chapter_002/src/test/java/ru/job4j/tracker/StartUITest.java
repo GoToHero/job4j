@@ -16,15 +16,14 @@ public class StartUITest {
     private final PrintStream sdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final String menu =
-            "Меню." + System.lineSeparator()
-            + "0. Добавить заявку." + System.lineSeparator()
-            + "1. Показать все заявки." + System.lineSeparator()
-            + "2. Редактировать/заменить заявку." + System.lineSeparator()
-            + "3. Удалить заявку." + System.lineSeparator()
-            + "4. Найти заявку по идентификатору." + System.lineSeparator()
-            + "5. Найти заявку по имени." + System.lineSeparator()
-            + "6. Выйти из программы." + System.lineSeparator()
-            + "Выбор: " + System.lineSeparator();
+            "0. Add program" + System.lineSeparator()
+            + "1. Show all items" + System.lineSeparator()
+            + "2. Edit item" + System.lineSeparator()
+            + "3. Delete item" + System.lineSeparator()
+            + "4. Find item by Id" + System.lineSeparator()
+            + "5. Find items by name" + System.lineSeparator()
+            + "6. Exit Program," + System.lineSeparator()
+            + "select: " + System.lineSeparator();
 
     @Before
     public void loadOutput() {
@@ -42,7 +41,7 @@ public class StartUITest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();     // создаём Tracker
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
         assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
