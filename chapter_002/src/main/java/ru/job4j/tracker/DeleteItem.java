@@ -20,6 +20,7 @@ public class DeleteItem implements UserAction {
         System.out.println("------------ Delete item --------------");
         String id = input.ask("Please, provide item ID:");
         tracker.delete(id);
+        System.out.println("------------ Operation complete --------------");
     }
 
     @Override

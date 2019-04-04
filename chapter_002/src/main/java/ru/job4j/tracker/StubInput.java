@@ -37,6 +37,10 @@ public class StubInput implements Input {
 
     @Override
     public int ask(String question, int[] range) {
-        return 0;
+        int result = -1;
+        if (question.equals("select:")) {
+            result = Integer.valueOf(this.value[this.position++]);
+        }
+        return result;
     }
 }
