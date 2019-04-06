@@ -39,7 +39,7 @@ public class StubInput implements Input {
     public int ask(String question, int[] range) {
         int result = -1;
         if (question.equals("select:")) {
-            result = Integer.valueOf(this.value[this.position++]);
+            result = Integer.valueOf(this.ask(question));
         }
         return result;
     }
