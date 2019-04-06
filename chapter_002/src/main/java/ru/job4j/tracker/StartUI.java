@@ -53,6 +53,11 @@ public class StartUI {
     private final Tracker tracker;
 
     /**
+     * Поле выключения программы.
+     */
+    private boolean working = true;
+
+    /**
      * Конструтор инициализирующий поля.
      * @param input ввод данных.
      * @param tracker хранилище заявок.
@@ -67,12 +72,19 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        menu.fillActions();
+        menu.fillActions(this);
         int[] range = menu.getRange();
         do {
             menu.show();
             menu.select(input.ask("select:", range));
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+        } while (this.working);
+    }
+
+    /**
+     * Метод завершающий программу.
+     */
+    public void stop() {
+        this.working = false;
     }
 
     /**
