@@ -39,13 +39,13 @@ public class StubInput implements Input {
     public int ask(String question, int[] range) {
         boolean exit = false;
         int result = Integer.valueOf(this.ask(question));
-        for(int value: range){
-            if(value == result){
+        for (int value: range) {
+            if (value == result) {
                 exit = true;
                 break;
             }
         }
-        if (exit){
+        if (exit) {
             return result;
         } else {
             throw new MenuOutException("Please select key from menu.");
