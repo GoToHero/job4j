@@ -37,10 +37,18 @@ public class StubInput implements Input {
 
     @Override
     public int ask(String question, int[] range) {
-        int result = -1;
-        if (question.equals("select:")) {
-            result = Integer.valueOf(this.ask(question));
+        boolean exit = false;
+        int result = Integer.valueOf(this.ask(question));
+        for(int value: range){
+            if(value == result){
+                exit = true;
+                break;
+            }
         }
-        return result;
+        if (exit){
+            return result;
+        } else {
+            throw new MenuOutException("Please select key from menu.");
+        }
     }
 }
