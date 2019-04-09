@@ -12,7 +12,7 @@ public class FindById implements UserAction {
 
     @Override
     public int key() {
-        return 5;
+        return 4;
     }
 
     @Override
