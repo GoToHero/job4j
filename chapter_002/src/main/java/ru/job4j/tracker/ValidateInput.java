@@ -19,9 +19,7 @@ public class ValidateInput implements Input {
 
     public int ask(String question, int[] range) {
         boolean invalid = true;
-        this.validates.forEach(invalid -> action.accept(invalid));
-
-        /*int value = -1;
+        int value = -1;
         do {
             try {
                 value = this.input.ask(question, range);
@@ -31,20 +29,8 @@ public class ValidateInput implements Input {
             } catch (NumberFormatException nfe) {
                 System.out.println("Please enter validate data again.");
             }
-        } while (invalid);*/
+        } while (invalid);
         return  value;
     }
 
-    private final List<Consumer<String>> validates = Arrays.asList(
-            invalid -> {
-                if (!invalid) {
-                    throw new MenuOutException("Please select key from menu.");
-                }
-            },
-            invalid -> {
-                if (!invalid) {
-                    throw new NumberFormatException("Please enter validate data again.");
-                }
-            }
-    );
 }

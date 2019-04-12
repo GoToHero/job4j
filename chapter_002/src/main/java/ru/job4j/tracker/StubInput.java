@@ -45,10 +45,14 @@ public class StubInput implements Input {
                 break;
             }
         }
-        if (exit) {
+        /*if (!exit) {
             return result;
         } else {
             throw new MenuOutException("Please select key from menu.");
+        }*/
+        if (!exit) {
+            throw new MenuOutException("Please select key from menu.");
         }
+        return result;
     }
 }
