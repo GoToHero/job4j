@@ -7,7 +7,6 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.hamcrest.collection.IsArrayContainingInAnyOrder.arrayContainingInAnyOrder;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -22,7 +21,7 @@ public class StartUITest {
             + "3. Delete item" + System.lineSeparator()
             + "4. Find item by Id" + System.lineSeparator()
             + "5. Find items by name" + System.lineSeparator()
-            + "6. Exit from program," + System.lineSeparator();
+            + "6. Exit from program" + System.lineSeparator();
 
     @Before
     public void loadOutput() {

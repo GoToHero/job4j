@@ -1,18 +1,9 @@
 package ru.job4j.tracker;
 
-public class FindById implements UserAction {
-
-    private int key;
-    private String name;
+public class FindById extends BaseAction {
 
     public FindById(int key, String name) {
-        this.key = key;
-        this.name = name;
-    }
-
-    @Override
-    public int key() {
-        return 4;
+        super(key, name);
     }
 
     @Override
@@ -26,10 +17,5 @@ public class FindById implements UserAction {
         } else {
             System.out.println("The operation failed. No match found for specified ID.");
         }
-    }
-
-    @Override
-    public String info() {
-        return String.format("%d. %s", key, name);
     }
 }

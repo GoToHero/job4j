@@ -1,18 +1,9 @@
 package ru.job4j.tracker;
 
-public class FindByNameItem implements UserAction {
-
-    private int key;
-    private String name;
+public class FindByNameItem extends BaseAction {
 
     public FindByNameItem(int key, String name) {
-        this.key = key;
-        this.name = name;
-    }
-
-    @Override
-    public int key() {
-        return 5;
+        super(key, name);
     }
 
     @Override
@@ -26,10 +17,5 @@ public class FindByNameItem implements UserAction {
                         + " Description: " + result[index].getDescription());
             }
         }
-    }
-
-    @Override
-    public String info() {
-        return String.format("%d. %s", key, name);
     }
 }
