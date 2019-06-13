@@ -1,8 +1,7 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class TrackerSingletonTest {
 
@@ -10,12 +9,8 @@ public class TrackerSingletonTest {
     public void JustTracker() {
         Tracker firstTracker = new Tracker();
         Tracker secondTracker = new Tracker();
-        boolean result = false;
-        if (firstTracker != secondTracker) {
-            result = true;
-        }
 
-        assertThat(result, is(true));
+        assertTrue(firstTracker != secondTracker);
     }
 
     @Test
@@ -24,7 +19,7 @@ public class TrackerSingletonTest {
         TrackerSingleEagerEnum secondTracker = TrackerSingleEagerEnum.INSTANCE;
         TrackerSingleEagerEnum thirdTracker = TrackerSingleEagerEnum.INSTANCE;
 
-        assertThat(firstTracker, is(thirdTracker));
+        assertTrue(firstTracker == secondTracker && secondTracker == thirdTracker);
     }
 
     @Test
@@ -33,7 +28,7 @@ public class TrackerSingletonTest {
         TrackerSingleStaticLazy secondTracker = TrackerSingleStaticLazy.getInstance();
         TrackerSingleStaticLazy thirdTracker = TrackerSingleStaticLazy.getInstance();
 
-        assertThat(firstTracker, is(thirdTracker));
+        assertTrue(firstTracker == secondTracker && secondTracker == thirdTracker);
     }
 
     @Test
@@ -42,7 +37,7 @@ public class TrackerSingletonTest {
         TrackerSingleFinalEager secondTracker = TrackerSingleFinalEager.getInstance();
         TrackerSingleFinalEager thirdTracker = TrackerSingleFinalEager.getInstance();
 
-        assertThat(firstTracker, is(thirdTracker));
+        assertTrue(firstTracker == secondTracker && secondTracker == thirdTracker);
     }
 
     @Test
@@ -51,6 +46,6 @@ public class TrackerSingletonTest {
         TrackerSinglePrivateLazy secondTracker = TrackerSinglePrivateLazy.getInstance();
         TrackerSinglePrivateLazy thirdTracker = TrackerSinglePrivateLazy.getInstance();
 
-        assertThat(firstTracker, is(thirdTracker));
+        assertTrue(firstTracker == secondTracker && secondTracker == thirdTracker);
     }
 }
